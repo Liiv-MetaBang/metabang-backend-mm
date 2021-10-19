@@ -21,4 +21,10 @@ public class HouseController {
     public List<HouseListResponseDto> find() {
         return houseService.findAllDesc();
     }
+    
+//    @GetMapping("/house/filter") 
+//    public List<HouseListResponseDto> filterFind() {
+//        return houseService.findAllDesc();
+//    }
+    
 }
