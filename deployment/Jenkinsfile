@@ -44,7 +44,7 @@ podTemplate(
 			// Javascript based on Node.js
 	 		//git branch: 'main', url: 'https://github.com/happykube/hellonode.git'
 			// Java based on Spring Boot, branch : msa
-			git branch: 'main', url: 'https://github.com/Liiv-MetaBang/metabang-backend'
+			git branch: 'main', url: 'https://github.com/Liiv-MetaBang/metabang-backend-mm'
 		} 
 
 		//-- 환경변수 파일 읽어서 변수값 셋팅 
