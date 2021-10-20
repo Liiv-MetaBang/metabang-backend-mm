@@ -17,6 +17,12 @@ import lombok.AllArgsConstructor;
 public class HouseController {
 	private final HouseService houseService;
 	
+    @GetMapping("/hi")
+    public String hi() {
+        return "hi";
+    }
+	
+	
     @GetMapping("/house/list")
     public List<HouseListResponseDto> find() {
         return houseService.findAllDesc();
