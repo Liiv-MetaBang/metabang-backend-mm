@@ -8,13 +8,13 @@ spec:
   tls:
   - secretName: tls-secret
   rules:
-  - host: dkne.169.56.174.130.nip.io
+  - host: dkne.169.56.174.139.nip.io
     http:
       paths:
-      - path: /
+      - path: /house
         pathType: Prefix
         backend:
           service:
-            name: sample
+            name: house
             port:
               number: 8080
