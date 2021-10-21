@@ -24,7 +24,7 @@ public class SwaggerConfig {
 
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder().title("Liiv Metabang House") // API 이름
-				.description("house api") // API 설명
+				.description("Liiv Metabang 서비스의 부동산 매물 API 입니다.") // API 설명
 				.version("1.0.0") // API 버전
 				.build();
 	}
