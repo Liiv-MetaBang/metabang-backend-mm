@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: house-config
 data:
-  SERVLET_CONTEXT_PATH: "/dkne"
+  SERVLET_CONTEXT_PATH: "/house"
 # MYSQL DB
   DB_SERVER: mysql.dkne
   DB_PORT: "3306"
