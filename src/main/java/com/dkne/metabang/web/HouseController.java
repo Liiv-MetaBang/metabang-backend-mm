@@ -2,7 +2,6 @@ package com.dkne.metabang.web;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,7 +11,6 @@ import com.dkne.metabang.web.dto.HouseListResponseDto;
 
 import lombok.AllArgsConstructor;
 
-@CrossOrigin(origins = {"*"}, maxAge = 6000)
 @RestController
 @AllArgsConstructor
 @RequestMapping("v1")
