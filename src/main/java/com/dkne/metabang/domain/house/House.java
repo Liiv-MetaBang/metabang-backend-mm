@@ -17,35 +17,35 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 public class House {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int house_id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int house_id;
 
-    @Column(length = 45, nullable = true)
-    private String house_name;
+	@Column(length = 45, nullable = true)
+	private String house_name;
 
-    @Column(nullable = true)
-    private long price;
+	@Column(nullable = true)
+	private long price;
 
-    @Temporal(TemporalType.DATE)
-    private Date build_date;
-    
-    @Column(nullable = true)
-    private int area;
-    
-    @Column(nullable = true)
-    private int floor;
-    
-    @Column(length = 45, nullable = false)
-    private double lng;
+	@Temporal(TemporalType.DATE)
+	private Date build_date;
 
-    @Column(nullable = false)
-    private double lat;
-    
-    @Column(length = 45, nullable = false)
-    private String address;
-    
-    @Builder
+	@Column(nullable = true)
+	private int area;
+
+	@Column(nullable = true)
+	private int floor;
+
+	@Column(length = 45, nullable = false)
+	private String address;
+
+	@Column(length = 45, nullable = false)
+	private double lng;
+
+	@Column(nullable = false)
+	private double lat;
+
+	@Builder
 	public House(int house_id, String house_name, long price, Date build_date, int area, int floor, Double lng,
 			Double lat, String address) {
 		super();
@@ -55,10 +55,9 @@ public class House {
 		this.build_date = build_date;
 		this.area = area;
 		this.floor = floor;
-		this.lng = lng;
-		this.lat = lat;
 		this.address = address;
+		this.lat = lat;
+		this.lng = lng;	
 	}
 
-    
 }

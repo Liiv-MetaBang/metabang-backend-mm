@@ -15,7 +15,9 @@ public class HouseListResponseDto {
 	private int area;
 	private int floor;
 	private String address;
-	
+	private double lat;
+	private double lng;
+
 	public HouseListResponseDto(House entity) {
 		this.house_id = entity.getHouse_id();
 		this.house_name = entity.getHouse_name();
@@ -24,5 +26,7 @@ public class HouseListResponseDto {
 		this.area = entity.getArea();
 		this.floor = entity.getFloor();
 		this.address = entity.getAddress();
+		this.lat = entity.getLat();
+		this.lng = entity.getLng();
 	}
 }

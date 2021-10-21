@@ -26,5 +26,10 @@ public class HouseService {
                 .collect(Collectors.toList());
     }
     
-
+    @Transactional(readOnly = true)
+    public List<HouseListResponseDto> findAll() {
+        return houseRepository.findAll().stream()
+                .map(HouseListResponseDto::new)
+                .collect(Collectors.toList());
+    }
 }
