@@ -1,14 +1,16 @@
 package com.dkne.metabang.domain.house;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+import com.dkne.metabang.domain.review.Review;
+import com.dkne.metabang.web.dto.ReviewResponseDto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -42,6 +44,10 @@ public class House {
 	@Column(nullable = false)
 	private double lat;
 
+	@JsonIgnore
+	@OneToMany(mappedBy = "house")
+	private List<Review> reviews = new ArrayList<Review>();
+
 	@Builder
 	public House(int house_id, String house_name, long price, int build_date, int area, int layer, Double lng,
 			Double lat, String address) {
@@ -54,7 +60,7 @@ public class House {
 		this.layer = layer;
 		this.address = address;
 		this.lat = lat;
-		this.lng = lng;	
+		this.lng = lng;
 	}
 
 	public void update(long price) {
