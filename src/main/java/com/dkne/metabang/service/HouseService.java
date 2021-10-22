@@ -2,11 +2,14 @@ package com.dkne.metabang.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dkne.metabang.domain.house.House;
 import com.dkne.metabang.domain.house.HouseRepository;
+import com.dkne.metabang.domain.house.HouseSpecification;
+import com.dkne.metabang.web.dto.HouseFilterRequestDto;
 import com.dkne.metabang.web.dto.HouseResponseDto;
 import com.dkne.metabang.web.dto.HouseSaveRequestDto;
 import com.dkne.metabang.web.dto.HouseUpdateRequestDto;
@@ -39,6 +42,18 @@ public class HouseService {
                 .map(HouseResponseDto::new)
                 .collect(Collectors.toList());
     }
+    
+    @Transactional(readOnly = true)
+    public List<HouseResponseDto> findFilter(HouseFilterRequestDto requestDto) {
+        Specification<House> spec = Specification.where(HouseSpecification.likeAddress(requestDto.getAddress()));
+        spec = spec.and(HouseSpecification.betweenLayer(requestDto.getLow_layer(), requestDto.getHigh_layer()));
+//        if(requestDto.getLowPrice() != 0 && high_price != 0) {
+//        	spec = spec.and(HouseSpecification.betweenPrice(low_price, high_price));
+//        }
+        return houseRepository.findAll(spec).stream()
+                .map(HouseResponseDto::new)
+                .collect(Collectors.toList());
+    }
 
     @Transactional
     public int update(int house_id, HouseUpdateRequestDto requestDto) {
@@ -56,6 +71,4 @@ public class HouseService {
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 매물입니다. id=" + house_id));
         houseRepository.delete(house);
     }
-
-    
 }
