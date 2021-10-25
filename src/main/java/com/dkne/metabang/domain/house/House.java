@@ -2,6 +2,7 @@ package com.dkne.metabang.domain.house;
 
 import javax.persistence.*;
 
+import com.dkne.metabang.domain.image.Image;
 import com.dkne.metabang.domain.review.Review;
 import com.dkne.metabang.web.dto.ReviewResponseDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -47,6 +48,10 @@ public class House {
 	@JsonIgnore
 	@OneToMany(mappedBy = "house")
 	private List<Review> reviews = new ArrayList<Review>();
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "house")
+	private List<Image> images = new ArrayList<Image>();
 
 	@Builder
 	public House(int house_id, String house_name, long price, int build_date, int area, int layer, Double lng,

@@ -25,3 +25,14 @@ spring:
       connection-test-query: SELECT 1
   session:
     store-type: jdbc
+#cloud:
+#  aws:
+#    credentials:
+#      accessKey: YOUR_ACCESS_KEY
+#      secretKey: YOUR_SECRET_KEY
+#    s3:
+#      bucket: dkne-img
+#    region:
+#      static: ap-northeast-2
+#    stack:
+#      auto: false
