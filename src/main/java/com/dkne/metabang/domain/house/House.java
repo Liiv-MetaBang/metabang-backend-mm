@@ -45,6 +45,9 @@ public class House {
 	@Column(nullable = false)
 	private double lat;
 
+	@Column(nullable = true)
+	private String thumbnail;
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "house")
 	private List<Review> reviews = new ArrayList<Review>();
@@ -55,7 +58,7 @@ public class House {
 
 	@Builder
 	public House(int house_id, String house_name, long price, int build_date, int area, int layer, Double lng,
-			Double lat, String address) {
+			Double lat, String address , String thumbnail) {
 		super();
 		this.house_id = house_id;
 		this.house_name = house_name;
@@ -66,6 +69,7 @@ public class House {
 		this.address = address;
 		this.lat = lat;
 		this.lng = lng;
+		this.thumbnail = thumbnail;
 	}
 
 	public void update(long price) {

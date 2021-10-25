@@ -1,5 +1,6 @@
 package com.dkne.metabang.web;
 
+import com.dkne.metabang.domain.image.Image;
 import com.dkne.metabang.service.HouseService;
 import com.dkne.metabang.service.ImageService;
 import com.dkne.metabang.web.dto.HouseResponseDto;
@@ -25,18 +26,18 @@ public class ImageController {
         return "Hello Img Controller :)";
     }
 
-    // show img info test
+    // show img info test 1
     @ApiOperation(value = "이미지 정보 조회", notes = "성공시 특정 이미지의 정보를 반환합니다.")
     @GetMapping("/{image_id}")
     public ImageResponseDto showImage(@PathVariable int image_id) {
         return imageService.findById(image_id);
     }
 
-    // show all house info
-//    @ApiOperation(value = "모든 매물 정보 조회", notes = "성공시 모든 매물의 정보를 반환합니다.")
-//    @GetMapping()
-//    public List<HouseResponseDto> showAllHouse() {
-//        return houseService.findAll();
-//    }
+    // show all detail image info
+    @ApiOperation(value = "모든 이미지 정보 조회", notes = "성공시 한 매물의 모든 상세 이미지의 정보를 반환합니다.")
+    @GetMapping("/detail/{house_id}")
+    public List<Image> showAllHouse(@PathVariable int house_id) {
+        return imageService.findAll(house_id);
+    }
 
 }
