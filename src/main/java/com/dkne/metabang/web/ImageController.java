@@ -34,7 +34,7 @@ public class ImageController {
     }
 
     // show all detail image info
-    @ApiOperation(value = "모든 매물 정보 조회", notes = "성공시 모든 매물의 정보를 반환합니다.")
+    @ApiOperation(value = "모든 이미지 정보 조회", notes = "성공시 한 매물의 모든 상세 이미지의 정보를 반환합니다.")
     @GetMapping("/detail/{house_id}")
     public List<Image> showAllHouse(@PathVariable int house_id) {
         return imageService.findAll(house_id);

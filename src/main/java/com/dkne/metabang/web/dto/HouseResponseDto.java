@@ -15,6 +15,7 @@ public class HouseResponseDto {
 	private String address;
 	private double lat;
 	private double lng;
+	private String thumbnail;
 
 	public HouseResponseDto(House entity) {
 		this.house_id = entity.getHouse_id();
@@ -26,5 +27,6 @@ public class HouseResponseDto {
 		this.address = entity.getAddress();
 		this.lat = entity.getLat();
 		this.lng = entity.getLng();
+		this.thumbnail = entity.getThumbnail();
 	}
 }
