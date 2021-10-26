@@ -8,6 +8,4 @@ import java.util.List;
 
 public interface HouseRepository extends JpaRepository<House, Integer>, JpaSpecificationExecutor<House> {
 
-    List<House> findAllByAddressContaining(String Address);
-    List<House> findAllByPriceBetween(long low_layer, long high_layer);
 }
