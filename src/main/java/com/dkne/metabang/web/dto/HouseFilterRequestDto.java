@@ -7,14 +7,14 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class HouseFilterRequestDto {
-	private int low_layer;
-	private int high_layer;
+	private long low_price;
+	private long high_price;
 	private String address;
 
 	@Builder
-    public HouseFilterRequestDto(int low_layer, int high_layer, String address) {
-        this.low_layer = low_layer;
-        this.high_layer = high_layer;
+    public HouseFilterRequestDto(long low_price, long high_price, String address) {
+        this.low_price = low_price;
+        this.high_price = high_price;
         this.address = address;        
     }
 }
