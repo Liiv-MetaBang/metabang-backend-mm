@@ -5,14 +5,15 @@ import org.springframework.data.jpa.domain.Specification;
 public class HouseSpecification {
 	
 	public static Specification<House> likeAddress(String address) {
-        return (Specification<House>) ((root, query, builder) -> 
-                builder.equal(root.get("address"), address)
+//	    return findByUsernameContaining(address);
+        return (Specification<House>) ((root, query, builder) ->
+                builder.like(root.get("address"), address + "%")
         );
     }
 	
-	public static Specification<House> betweenLayer(long low_layer, long high_layer) {
+	public static Specification<House> betweenPrice(long low_price, long high_price) {
         return (Specification<House>) ((root, query, builder) -> 
-                builder.between(root.get("layer"), low_layer, high_layer)
+                builder.between(root.get("price"), low_price, high_price)
         );
     }
 

@@ -1,4 +1,5 @@
 package com.dkne.metabang.service;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,11 +46,17 @@ public class HouseService {
     
     @Transactional(readOnly = true)
     public List<HouseResponseDto> findFilter(HouseFilterRequestDto requestDto) {
-        Specification<House> spec = Specification.where(HouseSpecification.likeAddress(requestDto.getAddress()));
-        spec = spec.and(HouseSpecification.betweenLayer(requestDto.getLow_layer(), requestDto.getHigh_layer()));
-//        if(requestDto.getLowPrice() != 0 && high_price != 0) {
-//        	spec = spec.and(HouseSpecification.betweenPrice(low_price, high_price));
-//        }
+        System.out.println(requestDto.getAddress() + " " + requestDto.getLow_price() + "  "+requestDto.getHigh_price());
+
+        String address = requestDto.getAddress();
+        long low = requestDto.getLow_price();
+        long high = requestDto.getHigh_price();
+
+        Specification<House> spec = Specification.where(HouseSpecification.likeAddress(address));
+//        spec = spec.or(HouseSpecification.betweenLayer(requestDto.getLow_layer(), requestDto.getHigh_layer()));
+        if(high!= 0) {
+        	spec = spec.and(HouseSpecification.betweenPrice(low, high));
+        }
         return houseRepository.findAll(spec).stream()
                 .map(HouseResponseDto::new)
                 .collect(Collectors.toList());
